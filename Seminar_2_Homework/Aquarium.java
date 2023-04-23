@@ -46,6 +46,59 @@ public class Aquarium {
         return capacity - fishes.size();
     }
 
+    public void getFishInfo(String name) {
+        for (Fish fish : fishes) {
+            if (fish.getName().equals(name)) {
+                System.out.println("Имя: " + fish.getName());
+                System.out.println("Скорость плавания: " + fish.getSwimmingSpeed());
+                return;
+            }
+        }
+        System.out.println("Рыба с именем " + name + " не найдена в аквариуме.");
+    }
+
+    public void updateFish(String name, double swimmingSpeed) {
+        for (Fish fish : fishes) {
+            if (fish.getName().equals(name)) {
+                fish.setSwimmingSpeed(swimmingSpeed);
+                System.out.println("Параметры рыбы " + name + " изменены");
+                return;
+            }
+        }
+        System.out.println("Рыбы с именем " + name + " нет в аквариуме");
+    }
+    
+    public List<Fish> getFishByAge(int age) {
+        List<Fish> filteredFish = new ArrayList<>();
+        for (Fish fish : fishes) {
+            if (fish.getAge() == age) {
+                filteredFish.add(fish);
+            }
+        }
+        return filteredFish;
+    }
+
+    public List<Fish> getFishByWeight(double weight) {
+        List<Fish> filteredFish = new ArrayList<>();
+        for (Fish fish : fishes) {
+            if (fish.getWeight() == weight) {
+                filteredFish.add(fish);
+            }
+        }
+        return filteredFish;
+    }
+
+    public List<Fish> getFishByGender(String gender) {
+        List<Fish> filteredFish = new ArrayList<>();
+        for (Fish fish : fishes) {
+            if (fish.getGender().equals(gender)) {
+                filteredFish.add(fish);
+            }
+        }
+        return filteredFish;
+    }
+    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
